@@ -1,6 +1,6 @@
 module.exports = {
     mongodb: {
-        url: 'mongodb://localhost/flashcard',
+        url: 'mongodb://root:root@ds161209.mlab.com:61209/flashcard',
         options: {
             clustered: false
         }
