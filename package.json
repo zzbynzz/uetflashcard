@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node ./src/server.js",
-    "heroku-postbuild": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack-dev-server.config.js --progress --inline --colors --history-api-fallback",
+    "heroku-postbuild": "webpack-dev-server --config webpack-dev-server.config.js --progress --inline --colors --history-api-fallback",
     "build": "webpack --config webpack-production.config.js --progress --colors"
   },
   "private": true,
