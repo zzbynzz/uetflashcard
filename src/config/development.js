@@ -9,7 +9,7 @@ module.exports = {
         name: 'Flashcard-Development-Server',
         protocol: 'http',
         host: 'localhost',
-        port: 9100,
+        port: process.env.PORT || '3000',
         requestExpiry: {header: 'x-request-expiry-time'},
         throttle: {
             burst: 100,
