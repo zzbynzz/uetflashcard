@@ -2,6 +2,7 @@
  * Created by Anh on 19/02/2017.
  */
 var restify = require('restify');
+var serveStatic = require('serve-static-restify')
 var mongoose = require('mongoose');
 var env = process.env.NODE_ENV || 'development';
 var config = require('./config/' + env);
@@ -18,6 +19,7 @@ server.use(restify.CORS({credentials: true, origins: ['*']}));
 server.use(restify.requestExpiry(config.server.requestExpiry));
 server.use(restify.requestLogger());
 server.use(restify.throttle(config.server.throttle));
+server.pre(serveStatic('src/www', {'index': ['index.html']}));
 mongoose.connect(config.mongodb.url, config.mongodb.options); // connect to our database
 
 // Apply routes

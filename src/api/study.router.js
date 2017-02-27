@@ -72,6 +72,7 @@ function saveStudySets(req, res, next) {
 }
 
 function handleUploadFile(req, res, next) {
+    console.log('Upload...');
     if (req.files) {
         var ext = path.extname(req.files.file0.name);
         var filename = shortid.generate();
@@ -79,10 +80,14 @@ function handleUploadFile(req, res, next) {
         var wstream = fs.createWriteStream(outputPath);
         fs.readFile(req.files.file0.path, function (err, data) {
             if (err) {
+                console.log("ERROR:");
+                console.log(err.stack);
                 return next(new restify.InternalServerError());
             }
             wstream.on('finish', function (err) {
                 if (err) {
+                    console.log("ERROR:");
+                    console.log(err.stack);
                     return next(new restify.InternalServerError());
                 }
                 res.send({status: true, data: {filename: IMAGE_PATH + filename + ext}});
